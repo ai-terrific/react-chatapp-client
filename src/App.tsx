@@ -13,7 +13,6 @@ const AppContent: React.FC = () => {
   const user = useSelector((state: RootState) => state.user.user);
   const username = user?.username ?? "";
   const [isDarkMode, setIsDarkMode] = useState(false);
-
   const theme = useMemo(
     () =>
       createTheme({

@@ -1,8 +1,7 @@
 import { io, Socket } from "socket.io-client";
 import { ConnectedUser } from "../types";
 
-const SOCKET_URL =
-  import.meta.env.VITE_SOCKET_URL || "http://172.20.5.112:5050";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:5050";
 
 class SocketService {
   private socket: Socket | null = null;
