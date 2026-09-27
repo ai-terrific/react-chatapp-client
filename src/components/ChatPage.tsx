@@ -65,7 +65,6 @@ const ChatPage: React.FC<ChatPageProps> = ({
         text: string;
         timestamp?: string;
       }) => {
-        console.log("data");
         const newMessage: ChatMessage = {
           id:
             data.id ||
@@ -75,14 +74,12 @@ const ChatPage: React.FC<ChatPageProps> = ({
           timestamp: data.timestamp ? new Date(data.timestamp) : new Date(),
           isOwn: data.username === username,
         };
+        console.log(newMessage);
         setMessages((previous) =>
           previous.some((message) => message.id === newMessage.id)
             ? previous
             : [...previous, newMessage],
         );
-        if (data.username === username) {
-          refreshMessages();
-        }
       },
     );
 
@@ -92,7 +89,7 @@ const ChatPage: React.FC<ChatPageProps> = ({
     return () => {
       socketService.disconnect();
     };
-  }, [username, refreshMessages]);
+  }, [username]);
 
   const handleSendMessage = useCallback((text: string) => {
     socketService.sendMessage(text);
